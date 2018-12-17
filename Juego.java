@@ -1,26 +1,7 @@
-/* Este codigo ha sido generado por el modulo psexport 20180125-w32 de PSeInt.
-Es posible que el codigo generado no sea completamente correcto. Si encuentra
-errores por favor reportelos en el foro (http://pseint.sourceforge.net). */
-
-// En java, el nombre de un archivo fuente debe coincidir con el nombre de la clase que contiene,
-// por lo que este archivo deberï¿½a llamarse "JOC1.java."
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-// Hay dos errores que se pueden generar al exportar un algoritmo con subprocesos desde PSeint a Java:
-// 1) En java no se puede elegir entre pasaje por copia o por referencia. Tï¿½cnicamente solo existe el
-// pasaje por copia, pero los identificadores de objetos representan en realidad referencias a los
-// objetos. Entonces, el pasaje para tipos nativos actï¿½a como si fuera por copia, mientras que el
-// pasaje para objetos (como por ejemplo String) actï¿½a como si fuera por referencia. Esto puede llevar
-// a que el algoritmo exportado no se comporte de la misma forma que el algoritmo original, en cuyo
-// caso deberï¿½n modificarse algunos mï¿½todos (subprocesos exportados) para corregir el problema.
-// 2) Las funciones que hacen lectura por teclado deben lazar una excepciï¿½n. Si una funciï¿½n A es
-// invocada por otra B, B tambiï¿½n debe manejar (lanzar en este caso) las execpciones que lance A.
-// Esto no se cumple en el cï¿½digo generado automï¿½ticamante: las funciones que realizan lecturas
-// directamente incluyen el cï¿½digo que indica que pueden generar dicha excepciï¿½n, pero las que
-// lo hacen indirectamente (invocando a otras que sï¿½ lo hacen), puede que no, y deberï¿½n ser
-// corregidas manualmente.
+
 import java.util.Scanner;
 
 public class Joc {
@@ -224,7 +205,7 @@ public class Joc {
 			System.out.println("");
 			System.out.println("");
 			System.out.println("");
-			System.out.println("Defineix amb les tecles quin atac vols fer:");
+			System.out.println("Define con las teclas que ataque realizar:");
 			System.out.println("Ataque -> 1");
 			System.out.println("Magia -> 2");
 			System.out.println("Especial -> 3");
@@ -243,7 +224,7 @@ public class Joc {
 				if (teclamenu == tecla) {
 					dmg = ataque();
 					hp2 = hp2-dmg;
-					System.out.println("Has realizado "+(int)dmg+" puntos de daÃ±o a la vida del enemigo");
+					System.out.println("Has realizado "+(int)dmg+" puntos de damage a la vida del enemigo");
 					Thread.sleep(3*1000);
 				}
 				// Menu de Magia
@@ -257,7 +238,7 @@ public class Joc {
 						if (mp1>=50) {
 							dmg = bioattack(mp1);
 							hp2 = hp2-dmg;
-							System.out.println("Has realizado "+(int)dmg+" puntos de daÃ±o a la vida del enemigo");
+							System.out.println("Has realizado "+(int)dmg+" puntos de damage a la vida del enemigo");
 							Thread.sleep(3*1000);
 						} else {
 							System.out.println("Turno Saltado. No tienes MP suficiente");
@@ -269,7 +250,7 @@ public class Joc {
 						if (mp1>=25) {
 							dmg = firewave(mp1);
 							hp2 = hp2-dmg;
-							System.out.println("Has realizado "+(int)dmg+" puntos de daÃ±o a la vida del enemigo");
+							System.out.println("Has realizado "+(int)dmg+" puntos de damage a la vida del enemigo");
 							Thread.sleep(3*1000);
 						} 
 						else {
@@ -296,7 +277,7 @@ public class Joc {
 								hp1 = 3000;
 							}
 						} else {
-							System.out.println("Turno Saltado. No tienes MP suficiente o tu HP estÃ¡ al mÃ¡ximo");
+							System.out.println("Turno Saltado. No tienes MP suficiente o tu HP esta al maximo");
 							Thread.sleep(3*1000);
 						}
 					}
@@ -306,7 +287,7 @@ public class Joc {
 							mp1 = mp1-45;
 							escudo = true;
 							vidae = 2;
-							System.out.println("Has usado un escudo que durarÃ¡ 2 ataques enemigos!");
+							System.out.println("Has usado un escudo que durara 2 ataques enemigos!");
 							Thread.sleep(3*1000);
 						} else {
 							System.out.println("Turno Saltado. No tienes MP suficiente");
@@ -319,13 +300,13 @@ public class Joc {
 							mp1 = mp1-150;
 							dmg = destruction(mp1);
 							hp2 = hp2-dmg;
-							System.out.println("Has realizado "+(int)dmg+" puntos de daÃ±o a la vida del enemigo");
+							System.out.println("Has realizado "+(int)dmg+" puntos de damage a la vida del enemigo");
 							Thread.sleep(2*1000);
 							if (dmg>450) {
-								System.out.println("Â¡El ataque fue efectivo!");
+								System.out.println("El ataque fue efectivo!");
 								Thread.sleep(3*1000);
 							} else {
-								System.out.println("Â¡El ataque no le hizo ni cosquillas!");
+								System.out.println("El ataque no le hizo ni cosquillas!");
 								Thread.sleep(3*1000);
 							}
 						} else {
@@ -336,7 +317,7 @@ public class Joc {
 				}
 				else if (tecla == teclarendicion) {
 					rendicion = true;
-					System.out.println("Â¡Â¡TE HAS RENDIDO!!");
+					System.out.println("TE HAS RENDIDO!!");
 					Thread.sleep(3*1000);
 				}
 			}
@@ -365,8 +346,8 @@ public class Joc {
 				if (mmenu==1) {
 					dmg = ataque2();
 					hp1 = hp1-dmg;
-					System.out.println("Enemigo atacÃ³!");
-					System.out.println("Has recibido "+(int)dmg+" puntos de daÃ±o a tu vida");
+					System.out.println("Enemigo ataca!");
+					System.out.println("Has recibido "+(int)dmg+" puntos de damage a tu vida");
 					noataque = false;
 					Thread.sleep(3*1000);
 				}
@@ -376,16 +357,16 @@ public class Joc {
 					if (mmenumagia==1 && mp2>=25) {
 						dmg = sdash(mp2);
 						hp1 = hp1-dmg;
-						System.out.println("Enemigo usÃ³: SDash!");
-						System.out.println("Has recibido "+(int)dmg+" puntos de daÃ±o a tu vida");
+						System.out.println("Enemigo uso: SDash!");
+						System.out.println("Has recibido "+(int)dmg+" puntos de damage a tu vida");
 						noataque = false;
 						Thread.sleep(3*1000);
 					}
 					if (mmenumagia==2 && mp2>=80) {
 						dmg = shadoworb(mp2);
 						hp1 = hp1-dmg;
-						System.out.println("Enemigo usÃ³: Shadow Orb!");
-						System.out.println("Has recibido "+(int)dmg+" puntos de daÃ±o a tu vida");
+						System.out.println("Enemigo uso: Shadow Orb!");
+						System.out.println("Has recibido "+(int)dmg+" puntos de damage a tu vida");
 						noataque = false;
 						Thread.sleep(3*1000);
 					}
@@ -399,7 +380,7 @@ public class Joc {
 						if (hp2>3000) {
 							hp2 = 3000;
 						}
-						System.out.println("Enemigo usÃ³: HEAL!");
+						System.out.println("Enemigo uso: HEAL!");
 						System.out.println("");
 						System.out.println("El enemigo se ha recuperado "+(int)cura+" puntos de vida");
 						noataque = false;
@@ -408,30 +389,30 @@ public class Joc {
 					if (mmenuesp==2 && mp2>=50) {
 						dmg = arain(mp2);
 						hp1 = hp2-dmg;
-						System.out.println("Enemigo usÃ³: Lluvia Acida!");
-						System.out.println("Has recibido DaÃ±o Continuado.");
-						System.out.println("Has recibido un total de "+(int)dmg+" puntos de daÃ±o a tu vida");
+						System.out.println("Enemigo uso: Lluvia Acida!");
+						System.out.println("Has recibido damage Continuado.");
+						System.out.println("Has recibido un total de "+(int)dmg+" puntos de damage a tu vida");
 						noataque = false;
 						Thread.sleep(4*1000);
 					}
 					if (mmenuesp==3 && mp2>=120) {
 						dmg = blackhole(mp2);
 						hp1 = hp1-dmg;
-						System.out.println("Enemigo usÃ³: BLACK HOLE!");
-						System.out.println("Es muy efectivo contra tÃ­!");
-						System.out.println("Has recibido un total de "+(int)dmg+" puntos de daÃ±o a tu vida");
+						System.out.println("Enemigo uso: BLACK HOLE!");
+						System.out.println("Es muy efectivo contra ti!");
+						System.out.println("Has recibido un total de "+(int)dmg+" puntos de damage a tu vida");
 						noataque = false;
 						Thread.sleep(4*1000);
 					}
 				}
 			}
 			if (escudo==true) {
-				System.out.println("Â¡Has bloqueado el ataque enemigo!");
+				System.out.println("Has bloqueado el ataque enemigo!");
 				Thread.sleep(3*1000);
 				vidae = vidae-1;
 				if (vidae==0) {
 					escudo = false;
-					System.out.println("Â¡El ESCUDO se ha roto!");
+					System.out.println("El ESCUDO se ha roto!");
 					Thread.sleep(3*1000);
 				}
 			}
@@ -459,13 +440,13 @@ public class Joc {
 		menu = "";
 		System.out.println("Quieres Empezar a Jugar?");
 		menu = teclado.next();
-		if (menu.equals("Si") || menu.equals("si") || menu.equals("SI")) {
+		if (menu.equalsIgnoreCase("si")) {
 			juego();
 		} else {
 			Thread.sleep(3*1000);
 			System.out.println("Y ahora?");
 			menu = teclado.next();
-			if (menu.equals("Si") || menu.equals("si") || menu.equals("SI")) {
+			if (menu.equalsIgnoreCase("si")) {
 				juego();
 			} else {
 				System.out.println("Pues nada tio, adios.");
