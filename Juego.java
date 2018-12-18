@@ -7,26 +7,23 @@ import java.util.Scanner;
 public class Joc {
 	BufferedReader bufEntrada = new BufferedReader(new InputStreamReader(System.in));
 
-	public static int firewave(double mp1) {
+	public static int firewave() {
 		int damage;
 		// Ataque de Jugador
-		mp1 = mp1-25;
 		damage = (int)(Math.random() * ((450 - 150) + 1)) + 150;
 		return damage;
 	}
 
-	public static int bioattack(double mp1) {
+	public static int bioattack() {
 		int damage;
 		// Ataque de Jugador
-		mp1 = mp1-50;
 		damage = (int)(Math.random() * ((650 - 250) + 1)) + 250; //aleatorio(250,650);
 		return damage;
 	}
 
-	public static int heal(double mp1) {
+	public static int heal() {
 		int curar;
 		// Ataque de Jugador
-		mp1 = mp1-75;
 		curar = (int)(Math.random() * ((600 - 500) + 1)) + 500;//aleatorio(500,600);
 		return curar;
 	}
@@ -38,10 +35,9 @@ public class Joc {
 		return damage;
 	}
 
-	public static int destruction(double mp1) {
+	public static int destruction() {
 		int damage;
 		// Ataque de Jugador ESPECIAL
-		mp1 = mp1-150;
 		damage = (int)(Math.random() * ((900 - 100) + 1)) + 100;//aleatorio(100,900);
 		return damage;
 	}
@@ -54,42 +50,37 @@ public class Joc {
 		return damage;
 	}
 
-	public static int heal2(double mp2) {
+	public static int heal2() {
 		int curar;
 		// Ataque de Maquina
-		mp2 = mp2-75;
 		curar = (int)(Math.random() * ((550) + 1)) + 550;//aleatorio(550,650);
 		return curar;
 	}
 
-	public static int sdash(double mp2) {
+	public static int sdash() {
 		int damage;
 		// Ataque de Maquina
-		mp2 = mp2-25;
 		damage = (int)(Math.random() * ((500 - 250) + 1)) + 250;//aleatorio(250,500);
 		return damage;
 	}
 
-	public static int shadoworb(double mp2) {
+	public static int shadoworb() {
 		int damage;
 		// Ataque de Maquina
-		mp2 = mp2-80;
 		damage = (int)(Math.random() * ((400) + 1)) + 400;//aleatorio(400,700);
 		return damage;
 	}
 
-	public static int blackhole(double mp2) {
+	public static int blackhole() {
 		int damage;
 		// Ataque de Maquina
-		mp2 = mp2-140;
 		damage = (int)(Math.random() * ((1400 - 500) + 1)) + 500;//aleatorio(500,1400);
 		return damage;
 	}
 
-	public static int arain(double mp2) {
+	public static int arain() {
 		int damage;
 		// Ataque de Maquina
-		mp2 = mp2-50;
 		damage = (int)(Math.random() * ((400 - 100) + 1)) + 100;//aleatorio(100,400);
 		damage += (int)(Math.random() * ((100 - 50) + 1)) + 50;//damage+aleatorio(50,100);
 		damage += (int)(Math.random() * ((80 - 40) + 1)) + 40;//damage+aleatorio(40,80);
@@ -236,7 +227,8 @@ public class Joc {
 					// BioAttack
 					if (teclamagiamenu == teclaelegirmagia1) {
 						if (mp1>=50) {
-							dmg = bioattack(mp1);
+							dmg = bioattack();
+							mp1 = mp1-50;
 							hp2 = hp2-dmg;
 							System.out.println("Has realizado "+(int)dmg+" puntos de damage a la vida del enemigo");
 							Thread.sleep(3*1000);
@@ -248,7 +240,8 @@ public class Joc {
 					// FireWave
 					else if (teclamagiamenu == teclaelegirmagia2) {
 						if (mp1>=25) {
-							dmg = firewave(mp1);
+							dmg = firewave();
+							mp1 = mp1-25;
 							hp2 = hp2-dmg;
 							System.out.println("Has realizado "+(int)dmg+" puntos de damage a la vida del enemigo");
 							Thread.sleep(3*1000);
@@ -269,8 +262,9 @@ public class Joc {
 					// Heal
 					if (teclaelegirespecial1 == teclaespecialmenu) {
 						if (mp1>=75 && hp1<3000) {
-							cura = heal(hp1);
+							cura = heal();
 							hp1 = hp1+cura;
+							mp1 = mp1-75;
 							System.out.println("Te has recuperado "+(int)cura+" puntos de vida");
 							Thread.sleep(3*1000);
 							if (hp1<3000) {
@@ -298,7 +292,7 @@ public class Joc {
 					else if (teclaelegirespecial3 == teclaespecialmenu) {
 						if (mp1>=150) {
 							mp1 = mp1-150;
-							dmg = destruction(mp1);
+							dmg = destruction();
 							hp2 = hp2-dmg;
 							System.out.println("Has realizado "+(int)dmg+" puntos de damage a la vida del enemigo");
 							Thread.sleep(2*1000);
@@ -355,7 +349,8 @@ public class Joc {
 				if (mmenu==2 || mmenu==3) {
 					mmenumagia = (int)(Math.random() * ((2 - 1) + 1)) + 1;//aleatorio(1,2);
 					if (mmenumagia==1 && mp2>=25) {
-						dmg = sdash(mp2);
+						dmg = sdash();
+						mp2 = mp2-25;
 						hp1 = hp1-dmg;
 						System.out.println("Enemigo uso: SDash!");
 						System.out.println("Has recibido "+(int)dmg+" puntos de damage a tu vida");
@@ -363,7 +358,8 @@ public class Joc {
 						Thread.sleep(3*1000);
 					}
 					if (mmenumagia==2 && mp2>=80) {
-						dmg = shadoworb(mp2);
+						dmg = shadoworb();
+						mp2 = mp2-80;
 						hp1 = hp1-dmg;
 						System.out.println("Enemigo uso: Shadow Orb!");
 						System.out.println("Has recibido "+(int)dmg+" puntos de damage a tu vida");
@@ -375,7 +371,8 @@ public class Joc {
 				if (mmenu==4) {
 					mmenuesp = (int)(Math.random() * ((3 - 1) + 1)) + 1;//aleatorio(1,3);
 					if (mmenuesp==1 && mp2>=75 && hp2>2000) {
-						cura = heal2(mp2);
+						cura = heal2();
+						mp2 = mp2-75;
 						hp2 = hp2+cura;
 						if (hp2>3000) {
 							hp2 = 3000;
@@ -387,7 +384,8 @@ public class Joc {
 						Thread.sleep(3*1000);
 					}
 					if (mmenuesp==2 && mp2>=50) {
-						dmg = arain(mp2);
+						dmg = arain();
+						mp2 = mp2-50;
 						hp1 = hp2-dmg;
 						System.out.println("Enemigo uso: Lluvia Acida!");
 						System.out.println("Has recibido damage Continuado.");
@@ -396,8 +394,9 @@ public class Joc {
 						Thread.sleep(4*1000);
 					}
 					if (mmenuesp==3 && mp2>=120) {
-						dmg = blackhole(mp2);
+						dmg = blackhole();
 						hp1 = hp1-dmg;
+						mp2 = mp2-140;
 						System.out.println("Enemigo uso: BLACK HOLE!");
 						System.out.println("Es muy efectivo contra ti!");
 						System.out.println("Has recibido un total de "+(int)dmg+" puntos de damage a tu vida");
