@@ -94,9 +94,9 @@ public class Joc {
 		int mmenumagia;
 		boolean noataque;
 		boolean rendicion;
-		char teclaespecialmenu;
-		char teclamagiamenu;
-		char tecla;
+		int teclaespecialmenu;
+		int teclamagiamenu;
+		int tecla;
 		int turno;
 		System.out.println("Elige tu Modo de Juego:");
 		System.out.println("");
@@ -190,7 +190,7 @@ public class Joc {
 			System.out.println("Rendirse -> 4");
 			System.out.println("");
 			// TURNO DE JUGADOR
-			tecla = teclado.next().charAt(0);
+			tecla = teclado.nextInt();
 			// Ataque Normal
 			if (tecla <= 4 && tecla >= 1) {
 				if (tecla == 1) {
@@ -202,7 +202,7 @@ public class Joc {
 					System.out.println("Elige la Magia:");
 					System.out.println("1- BioAttack: -50 MP");
 					System.out.println("2- FireWave: -25 MP");
-					teclamagiamenu = teclado.next().charAt(0);
+					teclamagiamenu = teclado.nextInt();
 					// BioAttack
 					if (teclamagiamenu == 1) {
 						if (mp1 >= 50) {
@@ -215,7 +215,7 @@ public class Joc {
 					}
 					// FireWave
 					else if (teclamagiamenu == 2) {
-						if (mp1>=25) {
+						if (mp1 >= 25) {
 							daño((int)(Math.random() * ((450 - 150) + 1)) + 150, 0, 2);
 							Thread.sleep(3*1000);
 						} 
@@ -231,7 +231,7 @@ public class Joc {
 					System.out.println("1- Heal: -75 MP (MAX 3000 HP)");
 					System.out.println("2- E.Shield: -45 MP");
 					System.out.println("3- Destruction: -150 MP");
-					teclaespecialmenu = teclado.next().charAt(0);
+					teclaespecialmenu = teclado.nextInt();
 					// Heal
 					if (teclaespecialmenu == 1) {
 						if (mp1 >= 75 && hp1 < 3000) {
